@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('store_name');
             $table->integer('categories_id');
             $table->integer('store_status');
+            $table->enum('roles',['USER','ADMIN'])->default('USER');
 
             $table->softDeletes();
             $table->rememberToken();
