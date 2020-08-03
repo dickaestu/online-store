@@ -15,6 +15,7 @@ class CartController extends Controller
     public function success()
     {
         return view('pages.success');
+        
     }
 
     
