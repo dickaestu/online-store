@@ -13,39 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','HomeController@index')->name('home');
-Route::get('/categories','CategoryController@index')->name('categories');
-Route::get('/details/{id}','DetailController@index')->name('detail');
-Route::get('/cart','CartController@index')->name('cart');
-Route::get('/success','CartController@success')->name('success');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/categories', 'CategoryController@index')->name('categories');
+Route::get('/details/{id}', 'DetailController@index')->name('detail');
+Route::get('/cart', 'CartController@index')->name('cart');
+Route::get('/success', 'CartController@success')->name('success');
 
-Route::get('/register/success','Auth\RegisterController@success')->name('register-success');
+Route::get('/register/success', 'Auth\RegisterController@success')->name('register-success');
 
 
-Route::get('/dashboard','DashboardController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::get('/dashboard/products','DashboardProductController@index')
-->name('dashboard-products');
-Route::get('/dashboard/products/create','DashboardProductController@create')
-->name('dashboard-products-create');
-Route::get('/dashboard/products/{id}','DashboardProductController@details')
-->name('dashboard-products-details');
+Route::get('/dashboard/products', 'DashboardProductController@index')
+    ->name('dashboard-products');
+Route::get('/dashboard/products/create', 'DashboardProductController@create')
+    ->name('dashboard-products-create');
+Route::get('/dashboard/products/{id}', 'DashboardProductController@details')
+    ->name('dashboard-products-details');
 
-Route::get('/dashboard/transactions','DashboardTransaction@index')->name('dashboard-transaction');
-Route::get('/dashboard/transactions/{id}','DashboardTransaction@details')
-->name('dashboard-transaction-details');
+Route::get('/dashboard/transactions', 'DashboardTransaction@index')->name('dashboard-transaction');
+Route::get('/dashboard/transactions/{id}', 'DashboardTransaction@details')
+    ->name('dashboard-transaction-details');
 
-Route::get('/dashboard/settings','DashboardSettingController@store')->name('dashboard-setting-store');
-Route::get('/dashboard/account','DashboardSettingController@account')->name('dashboard-setting-account');
+Route::get('/dashboard/settings', 'DashboardSettingController@store')->name('dashboard-setting-store');
+Route::get('/dashboard/account', 'DashboardSettingController@account')->name('dashboard-setting-account');
 
 
 Route::prefix('admin')
     ->namespace('Admin')
     // ->middleware(['auth','admin'])
-    ->group(function() {
-        Route::get('/','DashboardController@index')->name('admin-dashboard');
+    ->group(function () {
+        Route::get('/', 'DashboardController@index')->name('admin-dashboard');
         Route::resource('/category', 'CategoryController');
+        Route::resource('/user', 'UserController');
     });
 
 Auth::routes();
-
